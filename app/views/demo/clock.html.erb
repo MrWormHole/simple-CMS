@@ -1,0 +1,36 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Orbitron">
+  <style>
+    body {
+    //background-color: linen;
+      background-color: black;
+    }
+
+    .clock{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform:translateX(-50%) translateY(-50%);
+    //color: maroon;
+      color: #17D4FE;
+      font-size: 50px;
+      font-family: Orbitron;
+      letter-spacing: 7px;
+    }
+  </style>
+
+  <script type="text/javascript" >
+      $(document).ready(function () {
+          setInterval(function () {
+              $('#MyClockDisplay').load('/demo/clock');
+          }, 1000);
+      });
+  </script>
+</head>
+
+<body>
+  <div id="MyClockDisplay" class="clock">
+    <%= @time %>
+  </div>
+</body>
+
