@@ -1,12 +1,15 @@
 class CreateSubjects < ActiveRecord::Migration[5.2]
-  def change
+  def up
     create_table :subjects do |t|
-
-      t.name :string
-      t.position :integer
-      t.visible :boolean
+      t.string :name
+      t.integer :position
+      t.boolean :visible, :default => true
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :subjects
   end
 end
