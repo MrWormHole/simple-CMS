@@ -5,17 +5,18 @@
 
   <table class="listing" summary="Section list">
     <tr class="header">
-      <th>#</th>
-      <th>Page ID</th>
+
       <th>Section</th>
+      <th>Page ID</th>
+      <th>#</th>
       <th>Visible</th>
       <th>Actions</th>
     </tr>
     <% @sections.each do |section| %>
       <tr>
-        <td><%=section.position %></td>
-        <td><%= section.page_id %></td>
         <td><%=section.name %></td>
+        <td><%= section.page_id %></td>
+        <td><%=section.position %></td>
         <td class="center"><%=section.visible ? 'Yes' : 'No' %></td>
         <td class="actions">
           <%= link_to("Show", section_path(section),:class => 'action show') %>
