@@ -10,7 +10,7 @@
       <th>Subject ID</th>
       <th>#</th>
       <th>Permalink</th>
-      <th>Visible</th>
+      <th class="center">Visible</th>
       <th>Sections</th>
       <th>Actions</th>
     </tr>
@@ -21,7 +21,7 @@
         <td><%=page.position %></td>>
         <td><%= page.permalink %></td>
         <td class="center"><%=status_tag(page.visible) %></td>
-        <td class="center"><%=page.sections.size %></td>
+        <td><%=page.sections.size %></td>
         <td class="actions">
           <%= link_to("Show", page_path(page),:class => 'action show') %>
           <%= link_to("Edit", edit_page_path(page),:class => 'action edit') %>
