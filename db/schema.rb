@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2019_07_18_230510) do
 
   create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "first name", limit: 25
-    t.string "last name", limit: 50
+    t.string "first_name", limit: 25
+    t.string "last_name", limit: 50
     t.string "email", limit: 100, default: "", null: false
     t.string "username", limit: 25
     t.string "hashed_password", limit: 40
