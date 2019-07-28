@@ -1,6 +1,9 @@
 class SubjectsController < ApplicationController
 
   layout 'admin'
+
+  before_action :set_subject_count, :only => [:new,:create,:edit,:update]
+
   # List records
   def index
     @subjects = Subject.sorted
@@ -14,7 +17,6 @@ class SubjectsController < ApplicationController
   # Display new record form
   def new
     @subject = Subject.new({:name => 'default'})
-    @subject_count = Subject.count + 1
   end
 
   # Process new record form
@@ -25,7 +27,6 @@ class SubjectsController < ApplicationController
       flash[:notice] = "Subject created successfully"
       redirect_to(subjects_path)
     else
-      @subject_count = Subject.count + 1
       render('new')
     end
   end
@@ -33,7 +34,6 @@ class SubjectsController < ApplicationController
   # Display edit record form
   def edit
     @subject = Subject.find(params[:id])
-    @subject_count = Subject.count
   end
 
   # Process edit record form
@@ -44,7 +44,6 @@ class SubjectsController < ApplicationController
       flash[:notice] = "Subject updated successfully"
       redirect_to(subject_path)
     else
-      @subject_count = Subject.count
       render('edit')
     end
   end
@@ -65,5 +64,12 @@ class SubjectsController < ApplicationController
   private
   def subject_params
     params.require(:subject).permit(:name,:position,:visible)
+  end
+
+  def set_subject_count
+    @subject_count = Subject.count
+    if params[:action] == 'new' || params[:action] == 'create'
+      @subject_count += 1
+    end
   end
 end
