@@ -1,10 +1,12 @@
 class AdminUser < ApplicationRecord
+  has_secure_password
+
   has_and_belongs_to_many :pages
   has_many :section_edits
   has_many :sections, :through => :section_edits
   # attribute.table_name = "admin_users"
 
-  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,4}\Z/i
+  EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
   FORBIDDEN_USERNAMES = ['littlebopeep','humptydumpty','marymary']
 
  # validates_presence_of :first_name
@@ -28,7 +30,7 @@ class AdminUser < ApplicationRecord
                          :uniqueness => true
   validates :email,      :presence => true,
                          :length => {:maximum => 100},
-                         :with => EMAIL_REGEX,
+                         :format => EMAIL_REGEX,
                          :confirmation => true
 
 
