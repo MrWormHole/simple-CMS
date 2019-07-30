@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'demo#index'
+  root :to => 'public#index'
+
+  get 'show/:permalink', :to => 'public#show', :as => 'public_show'
+
   get 'demo/index'
   get 'demo/clock'
   get 'demo/supreme'

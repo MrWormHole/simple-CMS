@@ -1,4 +1,5 @@
 class Subject < ApplicationRecord
+  acts_as_list
   has_many :pages
 
   validates_presence_of :name, :position
